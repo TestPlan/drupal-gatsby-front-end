@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import { graphql } from "gatsby"
+import hero from "../images/temple-hero.jpg"
 
 import Layout from "../components/layout"
 import Image from "../components/image"
@@ -9,12 +10,24 @@ import SEO from "../components/seo"
 function IndexPage({ data }) {
   const homePage = data.allNodePage.edges[0].node
 
+  const textStyles = {
+    color: "#fefefe",
+    background: 'linear-gradient(rgba(255, 0, 0, 0.55), rgba(255, 0, 0, 0.55))',
+    display: "inline-block",
+    padding: ".5rem 1rem",
+    position: 'absolute',
+    top: '40%',
+  }
+
   return (
-    <Layout>
+    <Layout hero={hero}
+    style={{
+      position: 'relative'
+    }}
+    >
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-      <h1>{homePage.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: homePage.body.value }} />
-      <Link to="/about">Go to about page</Link>
+
+      <h1 style={textStyles}>Nothing Is Beyond You</h1>
     </Layout>
   )
 }
